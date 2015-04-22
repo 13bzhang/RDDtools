@@ -25,7 +25,11 @@
 #'
 
 
-RDDreg_np <- function(RDDobject, covariates=NULL, bw=RDDbw_IK(RDDobject), slope=c("separate", "same"), inference=c("np", "lm"), covar.opt=list(slope=c("same", "separate"), bw=NULL)){
+RDDreg_np <- function(RDDobject, covariates=NULL, 
+                      bw=RDDbw_IK(RDDobject), slope=c("separate", "same"), 
+                      inference=c("np", "lm"), 
+                      covar.opt=list(slope=c("same", "separate"), bw=NULL),
+                      s.weights){
 
   slope <- match.arg(slope)
   inference <- match.arg(inference)
@@ -43,7 +47,7 @@ RDDreg_np <- function(RDDobject, covariates=NULL, bw=RDDbw_IK(RDDobject), slope=
 
 
 ### Weights
-  kernel_w <- Kernel_tri(dat_step1[,"x"], center=0, bw=bw)
+  kernel_w <- (s.weights/bw) * Kernel_tri(dat_step1[,"x"], center=0, bw=bw)
 
 ## Regression
   reg <- lm(y~., data=dat_step1, weights=kernel_w)

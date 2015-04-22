@@ -29,7 +29,7 @@ RDDreg_np <- function(RDDobject, covariates=NULL,
                       bw=RDDbw_IK(RDDobject), slope=c("separate", "same"), 
                       inference=c("np", "lm"), 
                       covar.opt=list(slope=c("same", "separate"), bw=NULL),
-                      s.weights, s.weight.opt=TRUE){
+                      s.weights, s.weights.opt=TRUE){
 
   slope <- match.arg(slope)
   inference <- match.arg(inference)

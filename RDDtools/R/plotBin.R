@@ -59,7 +59,7 @@ plotBin <-  function(x, y, h=0.05, nbins=NULL, cutpoint=0,  plot=TRUE, type=c("v
 ## plot
   if(plot){
     plot(mid_points_bk, as.numeric(y2), pch=19, cex=cex, xlab=x_name, ylab=y_name, xlim=xlim,...)
-    title(main=main, sub=paste("h=", round(h,3)))
+    title(main=main)
     abline(v=cutpoint, lty=2)
   }
 

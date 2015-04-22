@@ -47,7 +47,7 @@ RDDreg_np <- function(RDDobject, covariates=NULL,
 
 
 ### Weights
-  if (s.weight != NULL){
+  if (s.weights != NULL){
     kernel_w <- (s.weights/bw) * Kernel_tri(dat_step1[,"x"], center=0, bw=bw) 
   } else{
     kernel_w <- Kernel_tri(dat_step1[,"x"], center=0, bw=bw)
